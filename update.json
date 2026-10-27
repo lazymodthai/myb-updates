@@ -1,16 +1,26 @@
 {
   "schema": 1,
   "latest": {
-    "versionCode": 5,
-    "versionName": "0.3.0",
-    "notes": "เวอร์ชันแรกที่อัปเดตในแอปได้: ซับไทยอัตโนมัติ (Gemini/ออฟไลน์), จำแท็บที่เปิดค้างไว้, แก้หน้าเทาตอนเปิด VPN, อัปเดตกฎโฆษณาอัตโนมัติ",
+    "versionCode": 6,
+    "versionName": "0.3.1",
+    "notes": "ซับออฟไลน์เร็วขึ้นมาก (ภาษาญี่ปุ่น/อังกฤษ), เว็บสตรีมมิ่งไม่ต้องขอสิทธิ์จับภาพหน้าจอ, Android 14+ ขอแบบทั้งหน้าจอโดยตรง",
     "apk": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.0/myB-0.3.0.apk",
-      "size": 134252876,
-      "sha256": "403fed755f6576abbc61e5c796b8a42ab19dccd7ec1346976808e2bd13f41b68"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.1/myB-0.3.1.apk",
+      "size": 134967789,
+      "sha256": "00f76146c48c544f1bca7a7f459f3cc07ca55980841f44669f6532cced02011d"
     }
   },
-  "patches": [],
+  "patches": [
+    {
+      "fromVersionCode": 5,
+      "fromSha256": "403fed755f6576abbc61e5c796b8a42ab19dccd7ec1346976808e2bd13f41b68",
+      "toVersionCode": 6,
+      "windowLog": 28,
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.1/myB-5-to-6.patch.zst",
+      "size": 9691660,
+      "sha256": "1fb82a1a532878f3386f09094f9ccd9113a0a0f2acf8fce580ab2aca4d0ced7a"
+    }
+  ],
   "filters": {
     "version": 1,
     "url": "https://raw.githubusercontent.com/lazymodthai/myb-updates/main/filters/thai.txt",
