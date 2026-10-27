@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "latest": {
+    "versionCode": 5,
+    "versionName": "0.3.0",
+    "notes": "เวอร์ชันแรกที่อัปเดตในแอปได้: ซับไทยอัตโนมัติ (Gemini/ออฟไลน์), จำแท็บที่เปิดค้างไว้, แก้หน้าเทาตอนเปิด VPN, อัปเดตกฎโฆษณาอัตโนมัติ",
+    "apk": {
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.0/myB-0.3.0.apk",
+      "size": 134252876,
+      "sha256": "403fed755f6576abbc61e5c796b8a42ab19dccd7ec1346976808e2bd13f41b68"
+    }
+  },
+  "patches": [],
+  "filters": {
+    "version": 1,
+    "url": "https://raw.githubusercontent.com/lazymodthai/myb-updates/main/filters/thai.txt",
+    "size": 2497,
+    "sha256": "5d0766ca082df28c294f0533ca84a7de7e5bab6504a902420336706f4c5f2b21"
+  }
+}

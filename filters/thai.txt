@@ -1,0 +1,58 @@
+! myB supplementary filters for Thai movie / manga / streaming sites.
+! Runs next to AdGuard (whose lists stay untouched); covers what AdGuard's default lists miss there:
+! self-hosted casino banners, the sites' own ad slots, and in-player ad gates.
+! Syntax: see filters/src/rules.js.
+
+! ---------------------------------------------------------------- network: ad hosts
+! Casino / lottery banner CDN used across Thai pirate sites.
+||image.cdend.com^
+
+! ---------------------------------------------------------------- network: banner images by ad size
+! GIF banners named after IAB / Thai banner sizes (728x180-panama888.gif, HYDRA888-270x540-1.gif ...).
+/[-_\/](728x(90|180|200|360)|970x(90|250)|270x540|120x(380|600)|160x600|600x90|300x(250|600)|320x(50|100))([-_.][^\/]*)?\.gif([?#]|$)/$image
+
+! ---------------------------------------------------------------- banner links (cosmetic)
+! Image links to these hosts are ad banners: they are hidden even when the site hosts the image itself.
+||ibit.ly^$link
+||t.ly^$link
+||tinyurl.com^$link
+||c301.cc^$link
+||df-play.com^$link
+||xn--365-1kl1e3c8a5a9q.fan^$link
+*ufa*$link
+*casino*$link
+*baccarat*$link
+*bacara*$link
+*slot*$link
+*sbobet*$link
+*sagame*$link
+*sexygame*$link
+*lotto*$link
+*huay*$link
+*joker*$link
+*gclub*$link
+*betflix*$link
+*dafabet*$link
+*xbet*$link
+*365kub*$link
+*miracle55*$link
+*honghao*$link
+*kamo-99*$link
+
+! ---------------------------------------------------------------- 037-hdd.com
+! Its ad slots are filled from /ads/*.php (top banners, side / footer popups, under the player, sidebar).
+||037-hdd.com/ads/
+||037-hdd.com/Banner/
+037-hdd.com###ads-single, #ads-popup, #ads-bottom-player, #ads-sidebar-single-top, #ads-sidebar-single-bottom, #banner-left, #ads_fox_bottom
+
+! ---------------------------------------------------------------- streamhls "ad gate" player (037-hdd.com and others)
+! Pre-roll ads are HLS playlists the gate plays before the movie; every ad can be skipped at once
+! (skip_after: 0), so press the gate's own skip / close buttons and hide its ad click layer.
+||streamhls1688.com/ad-playlists/
+streamhls1688.com##+click(#adgate-skip:not([hidden]):not([disabled]))
+streamhls1688.com##+click(#adgate-popup-close:not([hidden]))
+streamhls1688.com###adgate-ad-click, #adgate-cta, #adgate-popup
+
+! ---------------------------------------------------------------- niceoppai.net
+! Casino banners are self-hosted (blogger images) and hidden as banner links; .rads is the reader's ad box.
+niceoppai.net##.rads
