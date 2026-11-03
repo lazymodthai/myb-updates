@@ -37,13 +37,13 @@
     "sha256": "5d0766ca082df28c294f0533ca84a7de7e5bab6504a902420336706f4c5f2b21"
   },
   "macos": {
-    "version": "0.2.0",
-    "notes": "รีโมทจากมือถือ: ใช้แอป myB บน Android เป็นรีโมท (ชี้เพื่อเลื่อนเคอร์เซอร์ คลิก เลื่อนหน้า พิมพ์ URL ปุ่มควบคุมวิดีโอตอนเต็มจอ) จับคู่ด้วย QR ใน ตั้งค่า → รีโมทจากมือถือ · กด F12 เปิดเครื่องมือนักพัฒนาได้",
+    "version": "0.2.1",
+    "notes": "แก้ข้อความ error \"database is not open\" ตอนปิดหน้าต่าง · รีโมทจากมือถือ: พิมพ์ลงช่องกรอกข้อความบน Mac จากคีย์บอร์ดมือถือได้ สลับแท็บจากมือถือได้ (ใช้คู่กับ myB for Android 0.3.6) · youtube.com อยู่ในเว็บที่ปิดบล็อกโฆษณาให้ตั้งแต่ต้น และพิมพ์เพิ่มโดเมนในตั้งค่าได้",
     "arm64": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.2.0/myB-0.2.0-arm64-mac.zip",
-      "size": 129439683,
-      "sha256": "8e0d4b0754eac02d4b0d402042edb5c23069b51ed7fed0499dc5e07f164f3d67",
-      "signature": "pkaZpSbpiogLjhxG5Vcm5Go0ZUD44lqWh6Ojulj/Ev1OPAZdWPekAzjnm8mJUKOdBm3XuEIRpFiwd7qJaO5HBw=="
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.2.1/myB-0.2.1-arm64-mac.zip",
+      "size": 129441902,
+      "sha256": "ddf1c9b977f98e686d09d2c190add1aff14276dfc27d7013c6966680b5f88e9a",
+      "signature": "V5Zb4yO9V4MEUt6AkcP1CO9HCWjuUkN2M9tBYUPFx46YAJ7YxUZnPDWPtQ6QwAWJOxC8BUDJjHW8Rfnz6Q0MCg=="
     }
   }
 }
