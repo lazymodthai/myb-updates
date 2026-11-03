@@ -1,42 +1,24 @@
 {
   "schema": 1,
   "latest": {
-    "versionCode": 9,
-    "versionName": "0.3.4",
-    "notes": "- แก้แท็บที่บางครั้งเปิดแอปใหม่แล้วเป็นหน้าว่าง ไม่มี address\n- บล็อกลิงก์ affiliate (Shopee, TikTok, Lazada) ที่หน้าเว็บเปิดเอง ปิด/แก้รายการโดเมนได้ในตั้งค่า\n- แตะค้างที่การ์ดลิงก์เพื่อดูตัวอย่างของเว็บ แตะเฉยๆ เพื่อเปิดลิงก์",
+    "versionCode": 10,
+    "versionName": "0.3.5",
+    "notes": "รีโมท Mac: ใช้มือถือเป็นรีโมทของ myB บน Mac (ชี้เพื่อเลื่อนเคอร์เซอร์ แตะเพื่อคลิก พิมพ์ URL ปุ่มควบคุมวิดีโอตอนเต็มจอ) จับคู่ด้วยการสแกน QR · บีบนิ้วเข้าบนวิดีโอขนาดปกติเพื่อเปิดภาพซ้อนภาพ",
     "apk": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.4/myB-0.3.4.apk",
-      "size": 135055225,
-      "sha256": "9cf634ecdcb93cd188ce0238d9a76efcadeeaf379ef91835315383d9bb398773"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.5/myB-0.3.5.apk",
+      "size": 135275728,
+      "sha256": "453538d4e467355fc1ecd26481801bed1f9cd6321e44f2307413a0c410890845"
     }
   },
   "patches": [
     {
-      "fromVersionCode": 8,
-      "fromSha256": "563eb104b2bb85c3e66703c74f66ded820ed9cdb1228ec4c32691d17fcdf3f82",
-      "toVersionCode": 9,
+      "fromVersionCode": 9,
+      "fromSha256": "9cf634ecdcb93cd188ce0238d9a76efcadeeaf379ef91835315383d9bb398773",
+      "toVersionCode": 10,
       "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.4/myB-8-to-9.patch.zst",
-      "size": 11910392,
-      "sha256": "2a733c377eb6d3ea3ee4fb42dfa955cd485503d4b5d7c27b701392221b181092"
-    },
-    {
-      "fromVersionCode": 7,
-      "fromSha256": "8a884753525c74bdcbf3be9e3448d1b5752afa0cc9c3763818b09696d37a7ab0",
-      "toVersionCode": 9,
-      "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.4/myB-7-to-9.patch.zst",
-      "size": 13534705,
-      "sha256": "9577230d360898dd2085527ce4260e52b6cf1be3350b2bad01c47c15672091b4"
-    },
-    {
-      "fromVersionCode": 6,
-      "fromSha256": "00f76146c48c544f1bca7a7f459f3cc07ca55980841f44669f6532cced02011d",
-      "toVersionCode": 9,
-      "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.4/myB-6-to-9.patch.zst",
-      "size": 13538004,
-      "sha256": "d84a2c4fdf18a7cdf14012ff8cb7a5e5f267f55d9b45bb7b12bc3e6e39b02bd1"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.5/myB-9-to-10.patch.zst",
+      "size": 13847182,
+      "sha256": "3e32bb4fd7dc6cdb0d75f5fa2a932b56bde8afd35f52c70899cb1b731e3210e6"
     }
   ],
   "filters": {
