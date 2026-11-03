@@ -1,24 +1,33 @@
 {
   "schema": 1,
   "latest": {
-    "versionCode": 10,
-    "versionName": "0.3.5",
-    "notes": "รีโมท Mac: ใช้มือถือเป็นรีโมทของ myB บน Mac (ชี้เพื่อเลื่อนเคอร์เซอร์ แตะเพื่อคลิก พิมพ์ URL ปุ่มควบคุมวิดีโอตอนเต็มจอ) จับคู่ด้วยการสแกน QR · บีบนิ้วเข้าบนวิดีโอขนาดปกติเพื่อเปิดภาพซ้อนภาพ",
+    "versionCode": 11,
+    "versionName": "0.3.6",
+    "notes": "- ตั้งค่าแบ่งเป็นหมวดพร้อมไอคอน แตะหมวดเพื่อเข้าไปตั้งค่า ประวัติย้ายไปอยู่ใน ตั้งค่า → ประวัติและข้อมูล\n- เมนู ⋮ มีไอคอนทุกรายการ\n- เว็บที่ยกเว้นการบล็อกโฆษณา (มี youtube.com ให้ตั้งแต่ต้น) ใน ตั้งค่า → บล็อกโฆษณา\n- รีโมท Mac: กดเชื่อมต่อเองเท่านั้น ยกเลิกเชื่อมต่อ/ออกจากโหมดควบคุมได้ และตัดการเชื่อมต่อทันทีเมื่อออกจากหน้ารีโมท\n- รีโมท Mac: หน้าตาใหม่ใช้ไอคอน ปรับความไวเคอร์เซอร์ได้ระหว่างใช้งาน สลับแท็บบน Mac ได้\n- รีโมท Mac: แตะช่องกรอกข้อความบน Mac แล้วพิมพ์จากคีย์บอร์ดมือถือได้ (ช่องรหัสผ่านแสดงเป็นจุด)\n- ประวัติการอัปเดตในหน้า ตั้งค่า → อัปเดต",
     "apk": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.5/myB-0.3.5.apk",
-      "size": 135275728,
-      "sha256": "453538d4e467355fc1ecd26481801bed1f9cd6321e44f2307413a0c410890845"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.6/myB-0.3.6.apk",
+      "size": 135350339,
+      "sha256": "5b83765fa553bc774823dafda818bb91505be85a00a6392f6193eb8d0651e902"
     }
   },
   "patches": [
     {
+      "fromVersionCode": 10,
+      "fromSha256": "453538d4e467355fc1ecd26481801bed1f9cd6321e44f2307413a0c410890845",
+      "toVersionCode": 11,
+      "windowLog": 28,
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.6/myB-10-to-11.patch.zst",
+      "size": 13782315,
+      "sha256": "bf3a8f193ff4a08c47e5542014ac08baf398866b2d86838a7c6e3f5b0eba2670"
+    },
+    {
       "fromVersionCode": 9,
       "fromSha256": "9cf634ecdcb93cd188ce0238d9a76efcadeeaf379ef91835315383d9bb398773",
-      "toVersionCode": 10,
+      "toVersionCode": 11,
       "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.5/myB-9-to-10.patch.zst",
-      "size": 13847182,
-      "sha256": "3e32bb4fd7dc6cdb0d75f5fa2a932b56bde8afd35f52c70899cb1b731e3210e6"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.6/myB-9-to-11.patch.zst",
+      "size": 13877426,
+      "sha256": "dbc6461055e3bb6cf5c9b420337356766c34112edc1cb5f31c2a2d8c1b080696"
     }
   ],
   "filters": {
