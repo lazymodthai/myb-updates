@@ -1,11 +1,63 @@
-# myB
+<p align="center">
+  <a href="https://lazymodthai.github.io/myb-updates/"><img src="assets/banner.png" alt="myB — ดูเว็บได้เต็มตา ไม่มีโฆษณามาบัง" width="100%"></a>
+</p>
 
-เบราว์เซอร์ myB มีสองแอป คือ **myB for Android** (มือถือ) และ **myB for macOS** (Mac) บล็อกโฆษณาในตัว
-มี player สำหรับวิดีโอบนทุกเว็บ และมี VPN (WireGuard) เฉพาะ myB และใช้มือถือเป็น**รีโมทของ myB บน Mac** ได้
+<h1 align="center">myB</h1>
 
-ดาวน์โหลดได้ที่หน้า [Releases](https://github.com/lazymodthai/myb-updates/releases)
-เลือก release ที่ชื่อขึ้นต้นด้วย **myB for Android** หรือ **myB for macOS**
+<p align="center">
+  เบราว์เซอร์ภาษาไทยสำหรับ <b>Android</b> และ <b>Mac</b> บล็อกโฆษณาในตัว มี player ของตัวเองบนวิดีโอทุกเว็บ<br>
+  ซับไทยอัตโนมัติ VPN (WireGuard) เฉพาะ myB และใช้มือถือเป็นรีโมทของ Mac ได้ ใช้ฟรี ไม่ต้องสมัคร
+</p>
+
+<p align="center">
+  <a href="https://lazymodthai.github.io/myb-updates/"><b>เว็บไซต์ myB</b></a> ·
+  <a href="https://github.com/lazymodthai/myb-updates/releases">ดาวน์โหลดทุกเวอร์ชัน</a> ·
+  <a href="#ใช้มือถือเป็นรีโมทของ-mac">รีโมท Mac</a>
+</p>
+
+## ดาวน์โหลด
+
+| | ไฟล์ | รองรับ |
+|---|---|---|
+| **Android** | `myB-<เวอร์ชัน>.apk` จาก release **myB for Android** ล่าสุด | Android 8 ขึ้นไป, 64-bit (arm64) |
+| **Mac** | `myB-<เวอร์ชัน>-arm64.dmg` จาก release **myB for macOS** ล่าสุด | Mac ชิป Apple Silicon |
+
+หรือกดปุ่มดาวน์โหลดบน[เว็บไซต์](https://lazymodthai.github.io/myb-updates/) ซึ่งชี้ไปที่เวอร์ชันล่าสุดให้เอง
+วิธีติดตั้งทีละขั้นอยู่ด้านล่าง ([Android](#myb-for-android) · [Mac](#myb-for-macos))
+
+## หน้าตา
+
+<table>
+  <tr>
+    <td width="32%"><img src="assets/android-player.jpg" alt="player ของ myB บน Android"></td>
+    <td><img src="assets/mac-player.jpg" alt="myB บน Mac เล่นวิดีโอพร้อมแถบควบคุมของ myB"></td>
+  </tr>
+  <tr>
+    <td>ปุ่ม <b>b</b> มุมซ้ายบนของวิดีโอทุกเว็บ เปิดแถบควบคุมของ myB</td>
+    <td>หน้าตาเดียวกันบน Mac ใช้ ← → ข้าม, Space เล่น/หยุด, F เต็มจอ</td>
+  </tr>
+  <tr>
+    <td><img src="assets/android-settings.jpg" alt="หน้าตั้งค่าของ myB บน Android"></td>
+    <td><img src="assets/mac-settings.jpg" alt="หน้าตั้งค่าของ myB บน Mac"></td>
+  </tr>
+  <tr>
+    <td>ตั้งค่าแบ่งเป็นหมวด</td>
+    <td>บล็อกโฆษณา ธีม PIN และ VPN ในหน้าเดียว</td>
+  </tr>
+</table>
+
+## จุดเด่น
+
+- **บล็อกโฆษณาในตัว** AdGuard ร่วมกับตัวกรองของ myB สำหรับเว็บไทย (แบนเนอร์คาสิโน โฆษณาคั่นก่อนวิดีโอ)
+- **Player บนวิดีโอทุกเว็บ** แตะสองครั้งเพื่อข้าม กดค้างเพื่อเล่น 2x ปัดเพื่อเลื่อนเวลา บีบนิ้วเพื่อเต็มจอ
+- **ซับไทยอัตโนมัติ** บน Android 10 ขึ้นไป
+- **VPN (WireGuard) เฉพาะ myB** แอปอื่นไม่ได้รับผล VPN หลุดเมื่อไหร่ myB หยุดโหลดทันที
+- **ล็อกด้วย PIN** บนทั้งสองเครื่อง
+- **มือถือเป็นรีโมทของ Mac** ชี้เพื่อเลื่อนเคอร์เซอร์ พิมพ์จากมือถือ ส่งหน้าเว็บไปเปิดบน Mac
+- **อัปเดตตัวเอง** เช็กวันละครั้ง บน Android โหลดแค่ส่วนที่เปลี่ยน
+
 repo นี้ยังเก็บไฟล์ที่แอปใช้อัปเดตตัวเองด้วย (`update.json`, รายการกฎโฆษณา `filters/thai.txt`)
+และหน้าเว็บไซต์ (`index.html`, `assets/`)
 
 ---
 

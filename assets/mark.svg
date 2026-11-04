@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 1000" width="1040" height="1000">
+  <!--
+    myB mark: a "B" ribbon that frames a small browser window (traced from design/brand-board.png).
+    Layers, back to front: the lower bowl (the ribbon's inside), the frame (top bowl + left stem), the white
+    window with its three dots, then the front ribbon that sweeps up from the bottom-left corner.
+    scripts/render-icons.mjs re-colours the four gradients for the tile variants; keep their ids.
+  -->
+  <defs>
+    <linearGradient id="bowl" gradientUnits="userSpaceOnUse" x1="150" y1="900" x2="1010" y2="720">
+      <stop offset="0" stop-color="#0029B5"/>
+      <stop offset="0.55" stop-color="#0057F2"/>
+      <stop offset="1" stop-color="#27AEFF"/>
+    </linearGradient>
+    <linearGradient id="frame" gradientUnits="userSpaceOnUse" x1="40" y1="860" x2="760" y2="60">
+      <stop offset="0" stop-color="#62D6FF"/>
+      <stop offset="0.38" stop-color="#1690FF"/>
+      <stop offset="1" stop-color="#0066FF"/>
+    </linearGradient>
+    <linearGradient id="ribbon" gradientUnits="userSpaceOnUse" x1="40" y1="900" x2="880" y2="430">
+      <stop offset="0" stop-color="#1A63EE"/>
+      <stop offset="0.5" stop-color="#3B9DFF"/>
+      <stop offset="1" stop-color="#0A66FF"/>
+    </linearGradient>
+    <linearGradient id="window" gradientUnits="userSpaceOnUse" x1="0" y1="250" x2="0" y2="680">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EEF5FF"/>
+    </linearGradient>
+    <radialGradient id="dotShine" cx="0.38" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="0.6" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <clipPath id="ribbonClip"><path d="M866 437 C800 512 682 552 560 592 C402 642 252 720 162 800 C110 848 98 922 136 968 C66 962 20 914 20 845 C20 750 72 652 152 590 C252 514 402 468 612 404 C700 380 812 384 866 437 Z"/></clipPath>
+    <clipPath id="windowClip">
+      <path id="windowShape" d="M85 690 L85 345 C85 292 116 260 168 249 L515 181 C612 162 690 222 696 300 C701 356 664 393 612 406 L560 440 L85 720 Z"/>
+    </clipPath>
+  </defs>
+
+  <g id="mark">
+    <!-- Lower bowl: the inside of the ribbon, seen below it. -->
+    <path id="bowlShape" fill="url(#bowl)" d="M870 430 C955 462 1018 548 1016 648 C1014 752 948 828 850 850 L268 975 C178 994 108 965 92 905 L60 760 L600 520 Z"/>
+    <!-- Frame: the top bowl and the left stem. -->
+    <path id="frameShape" fill="url(#frame)" d="M20 850 L20 330 C20 238 70 172 150 152 L585 32 C770 -14 935 100 935 280 C935 352 908 404 868 438 L620 480 L200 690 L70 900 C42 890 20 872 20 850 Z"/>
+    <!-- The browser window and its three dots. -->
+    <use href="#windowShape" fill="url(#window)"/>
+    <g id="dots">
+      <circle cx="213" cy="361" r="44" fill="#F43F3F"/>
+      <circle cx="350" cy="331" r="44" fill="#FFB425"/>
+      <circle cx="487" cy="302" r="44" fill="#10B15A"/>
+      <circle cx="213" cy="361" r="44" fill="url(#dotShine)"/>
+      <circle cx="350" cy="331" r="44" fill="url(#dotShine)"/>
+      <circle cx="487" cy="302" r="44" fill="url(#dotShine)"/>
+    </g>
+    <!-- Soft shadow the ribbon casts on the window. -->
+    <g clip-path="url(#windowClip)">
+      <path fill="#0B3FA8" fill-opacity="0.22" filter="url(#soft)" transform="translate(0 -18)" d="M28 850 C25 750 72 652 152 590 C252 514 402 468 612 404 C700 380 820 382 880 430 L880 470 L28 900 Z"/>
+    </g>
+    <!-- Front ribbon, from the bottom-left curl up to the top bowl's right side. -->
+    <path id="ribbonShape" fill="url(#ribbon)" d="M866 437 C800 512 682 552 560 592 C402 642 252 720 162 800 C110 848 98 922 136 968 C66 962 20 914 20 845 C20 750 72 652 152 590 C252 514 402 468 612 404 C700 380 812 384 866 437 Z"/>
+    <!-- Soft highlight along the ribbon. -->
+    <g clip-path="url(#ribbonClip)">
+      <ellipse cx="470" cy="575" rx="330" ry="62" transform="rotate(-21 470 575)" fill="#FFFFFF" fill-opacity="0.26" filter="url(#glow)"/>
+    </g>
+  </g>
+</svg>

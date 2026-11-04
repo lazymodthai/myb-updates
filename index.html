@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>myB — เบราว์เซอร์สำหรับ Android และ Mac</title>
+<meta name="description" content="เบราว์เซอร์ภาษาไทย บล็อกโฆษณาในตัว มี player สำหรับวิดีโอทุกเว็บ ซับไทยอัตโนมัติ และ VPN เฉพาะ myB ใช้ฟรีบน Android และ Mac">
+<meta property="og:title" content="myB — เบราว์เซอร์สำหรับ Android และ Mac">
+<meta property="og:description" content="บล็อกโฆษณาในตัว คุมวิดีโอได้ทุกเว็บ ซับไทยอัตโนมัติ ใช้ฟรี">
+<meta property="og:image" content="https://lazymodthai.github.io/myb-updates/assets/banner.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0066FF">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0066FF;
+    --sky: #3BB6FF;
+    --violet: #7B61FF;
+    --orange: #FF8A3D;
+    --navy: #0B1A3A;
+    --mist: #E9EDF5;
+    --bg: #F6F8FC;
+    --surface: #FFFFFF;
+    --ink: #0B1A3A;
+    --muted: #4A5878;
+    --line: #D9E0EC;
+    --bar: #101A33;
+    --code: #EEF2F9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #070F22;
+      --surface: #0E1A36;
+      --ink: #E9EDF5;
+      --muted: #9FB0D0;
+      --line: #22325A;
+      --bar: #050B19;
+      --code: #14234A;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.75 "IBM Plex Sans Thai", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Anuphan", "IBM Plex Sans Thai", sans-serif; line-height: 1.3; margin: 0; }
+  a { color: var(--blue); }
+  @media (prefers-color-scheme: dark) { a { color: var(--sky); } }
+  :focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+  /* Top bar */
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 700 22px "Anuphan", sans-serif; color: var(--ink); text-decoration: none; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  .top nav { display: flex; gap: 22px; font-size: 15px; }
+  .top nav a { color: var(--muted); text-decoration: none; }
+  .top nav a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .top nav a.opt { display: none; } }
+
+  /* Hero: the page opens on myB's own player — the "b" corner button and the bar. */
+  .stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    color: #fff;
+    background: var(--navy);
+    isolation: isolate;
+    margin-top: 6px;
+  }
+  .stage::before {
+    content: "";
+    position: absolute; inset: -20%;
+    z-index: -1;
+    background:
+      radial-gradient(42% 55% at 22% 18%, rgba(59,182,255,.95), transparent 70%),
+      radial-gradient(40% 50% at 78% 30%, rgba(123,97,255,.9), transparent 70%),
+      radial-gradient(45% 55% at 60% 95%, rgba(255,138,61,.85), transparent 70%),
+      radial-gradient(60% 70% at 10% 90%, rgba(0,102,255,.95), transparent 70%),
+      var(--navy);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) rotate(0deg) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) rotate(8deg) scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) { .stage::before { animation: none; } }
+  .corner {
+    position: absolute; top: 20px; left: 20px;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(11,26,58,.72);
+    font: 700 26px/1 "Anuphan", sans-serif;
+    color: #fff;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset;
+  }
+  .stage-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    gap: 32px;
+    align-items: end;
+    padding: 96px 56px 0;
+  }
+  .stage h1 {
+    font-size: clamp(36px, 5.6vw, 68px);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    max-width: 13ch;
+    text-wrap: balance;
+  }
+  .stage .lede {
+    font-size: clamp(17px, 1.8vw, 20px);
+    max-width: 34em;
+    margin: 18px 0 56px;
+    color: rgba(255,255,255,.9);
+  }
+  .phone {
+    justify-self: center;
+    width: min(300px, 100%);
+    margin-bottom: -2px;
+    border-radius: 34px 34px 0 0;
+    border: 8px solid #050B19;
+    border-bottom: 0;
+    background: #050B19;
+    overflow: hidden;
+    aspect-ratio: 9 / 15.5;
+    box-shadow: 0 30px 80px rgba(5,11,25,.45);
+  }
+  .phone img { width: 100%; display: block; }
+  .bar {
+    position: relative;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 18px 24px 22px;
+    background: var(--bar);
+  }
+  .bar .track {
+    position: absolute; left: 0; right: 0; top: 0; height: 4px;
+    background: rgba(255,255,255,.14);
+  }
+  .bar .track span {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 38%;
+    background: linear-gradient(90deg, var(--sky), var(--blue));
+  }
+  .bar .track span::after {
+    content: ""; position: absolute; right: -7px; top: -5px;
+    width: 14px; height: 14px; border-radius: 50%; background: #fff;
+  }
+  .dl {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 999px;
+    font: 600 16px "IBM Plex Sans Thai", sans-serif;
+    color: #fff; text-decoration: none;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset;
+    transition: background .15s;
+  }
+  .dl:hover { background: rgba(255,255,255,.18); }
+  .dl.primary { background: var(--blue); box-shadow: none; }
+  .dl.primary:hover { background: #1a75ff; }
+  .dl svg { width: 20px; height: 20px; flex: none; }
+  .dl small { font-weight: 400; opacity: .75; font-size: 14px; }
+  .bar .note { margin-left: auto; font-size: 14px; color: rgba(255,255,255,.65); }
+  @media (max-width: 860px) {
+    .stage-body { grid-template-columns: minmax(0, 1fr); padding: 88px 24px 0; }
+    .stage .lede { margin-bottom: 28px; }
+    .stage .phone { display: none; } /* phones: the download buttons first; screenshots follow below */
+    .bar { padding: 18px 16px 20px; }
+    .bar .note { margin-left: 0; width: 100%; }
+    .dl { flex: 1 1 100%; justify-content: center; }
+  }
+
+  /* Sections */
+  section { padding: 96px 0 0; }
+  .head { max-width: 640px; margin-bottom: 36px; }
+  .head h2 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; }
+  .head p { color: var(--muted); margin: 10px 0 0; }
+
+  .shots { position: relative; padding-bottom: 40px; }
+  .mac {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 24px 60px rgba(11,26,58,.14);
+    width: 86%;
+  }
+  .mac .chrome { display: flex; gap: 7px; padding: 11px 14px; background: var(--mist); }
+  @media (prefers-color-scheme: dark) { .mac .chrome { background: #1a2547; } }
+  .mac .chrome i { width: 11px; height: 11px; border-radius: 50%; background: #FF5F57; }
+  .mac .chrome i:nth-child(2) { background: #FEBC2E; }
+  .mac .chrome i:nth-child(3) { background: #28C840; }
+  .mac img { display: block; width: 100%; }
+  .shots .phone-float {
+    position: absolute; right: 0; bottom: 0;
+    width: 26%;
+    border-radius: 30px;
+    border: 7px solid #050B19;
+    overflow: hidden;
+    background: #050B19;
+    box-shadow: 0 24px 60px rgba(11,26,58,.3);
+  }
+  .shots .phone-float img { display: block; width: 100%; }
+  .caption { color: var(--muted); font-size: 15px; margin-top: 18px; max-width: 60ch; }
+  @media (max-width: 700px) {
+    .mac { width: 100%; }
+    .shots .phone-float { position: relative; width: 62%; margin: -60px 0 0 auto; }
+  }
+
+  /* Gestures: a row of the player's own moves */
+  .gestures {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    background: var(--surface);
+  }
+  .gesture { padding: 22px 22px 24px; border-left: 1px solid var(--line); }
+  .gesture:first-child { border-left: 0; }
+  .gesture svg { width: 40px; height: 40px; color: var(--blue); }
+  @media (prefers-color-scheme: dark) { .gesture svg { color: var(--sky); } }
+  .gesture h3 { font-size: 18px; margin: 12px 0 2px; }
+  .gesture p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  @media (max-width: 860px) {
+    .gestures { grid-template-columns: 1fr 1fr; }
+    .gesture:nth-child(3) { border-left: 0; }
+    .gesture:nth-child(n+3) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 480px) {
+    .gestures { grid-template-columns: minmax(0, 1fr); }
+    .gesture { border-left: 0; }
+    .gesture:nth-child(n+2) { border-top: 1px solid var(--line); }
+  }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+  .feature { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .feature .ic {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: color-mix(in srgb, var(--blue) 12%, transparent);
+    color: var(--blue);
+  }
+  @media (prefers-color-scheme: dark) { .feature .ic { color: var(--sky); background: color-mix(in srgb, var(--sky) 14%, transparent); } }
+  .feature .ic svg { width: 22px; height: 22px; }
+  .feature h3 { font-size: 20px; }
+  .feature p { margin: 6px 0 0; color: var(--muted); }
+  .feature .where { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 0 10px; }
+  @media (max-width: 760px) { .features { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Settings pair */
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 28px; align-items: start; }
+  .pair figure { margin: 0; }
+  .pair img { width: 100%; display: block; border-radius: 16px; border: 1px solid var(--line); }
+  .pair figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+  @media (max-width: 700px) { .pair { grid-template-columns: minmax(0, 1fr); } .pair figure:first-child { width: 70%; } }
+
+  /* Install */
+  .install { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .platform { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+  .platform h3 { font-size: 24px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .platform h3 small { font: 400 15px "IBM Plex Sans Thai", sans-serif; color: var(--muted); }
+  .platform ol { margin: 18px 0 22px; padding-left: 1.3em; }
+  .platform li { margin: 8px 0; }
+  .platform li::marker { font-weight: 600; color: var(--blue); }
+  .platform .dl { color: #fff; }
+  .cmd {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 10px; padding: 8px 8px 8px 14px;
+    background: var(--code); border-radius: 10px;
+    font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    overflow-x: auto;
+  }
+  .cmd code { white-space: nowrap; flex: 1; }
+  .cmd button {
+    flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    border-radius: 8px; padding: 4px 10px; font: 500 13px "IBM Plex Sans Thai", sans-serif; cursor: pointer;
+  }
+  @media (max-width: 760px) { .install { grid-template-columns: minmax(0, 1fr); } }
+
+  footer { margin-top: 110px; padding: 36px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+  footer .cols { display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: space-between; }
+  footer p { margin: 0 0 6px; max-width: 70ch; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#"><img src="assets/icon.png" alt="">myB</a>
+    <nav aria-label="หัวข้อในหน้า">
+      <a class="opt" href="#player">Player</a>
+      <a class="opt" href="#features">ฟีเจอร์</a>
+      <a href="#install">ติดตั้ง</a>
+      <a href="https://github.com/lazymodthai/myb-updates/releases">Releases</a>
+    </nav>
+  </header>
+
+  <div class="stage">
+    <span class="corner" aria-hidden="true">b</span>
+    <div class="stage-body">
+      <div>
+        <h1>ดูเว็บได้เต็มตา ไม่มีโฆษณามาบัง</h1>
+        <p class="lede">myB เป็นเบราว์เซอร์ภาษาไทยสำหรับ Android และ Mac บล็อกโฆษณาในตัว
+          และมี player ของตัวเองบนวิดีโอทุกเว็บ แตะสองครั้งเพื่อข้าม กดค้างเพื่อดูเร็วขึ้น ใช้ฟรี ไม่ต้องสมัคร</p>
+      </div>
+      <div class="phone"><img src="assets/android-player.jpg" alt="myB บน Android กำลังเล่นวิดีโอ มีปุ่ม b และแถบควบคุมของ myB"></div>
+    </div>
+    <div class="bar">
+      <div class="track" aria-hidden="true"><span></span></div>
+      <a class="dl primary" id="dl-android" data-platform="android" href="https://github.com/lazymodthai/myb-updates/releases">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 10-.66-.38l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 10-.66.38L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/></svg>
+        ดาวน์โหลดสำหรับ Android <small id="v-android"></small>
+      </a>
+      <a class="dl" id="dl-mac" data-platform="mac" href="https://github.com/lazymodthai/myb-updates/releases">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.77c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76A4.26 4.26 0 005.24 10c-1.54 2.67-.39 6.62 1.1 8.79.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.14a9.5 9.5 0 001.2-2.47 3.84 3.84 0 01-2.26-3.59zM14.2 6.3A3.83 3.83 0 0015.1 3.5a3.9 3.9 0 00-2.53 1.31 3.66 3.66 0 00-.92 2.72 3.24 3.24 0 002.55-1.23z"/></svg>
+        ดาวน์โหลดสำหรับ Mac <small id="v-mac"></small>
+      </a>
+      <span class="note">Android 8 ขึ้นไป (64-bit) และ Mac ชิป Apple Silicon</span>
+    </div>
+  </div>
+
+  <section id="player">
+    <div class="head">
+      <h2>Player เดียวกันบนวิดีโอทุกเว็บ</h2>
+      <p>เว็บไหนมีวิดีโอ myB จะวางปุ่ม b ไว้ที่มุมซ้ายบน ใช้ท่าเดิมได้ทุกเว็บ ปุ่มของเว็บเองก็ยังกดได้ตามปกติ</p>
+    </div>
+    <div class="gestures">
+      <div class="gesture">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="20" r="5"/><circle cx="12" cy="20" r="9.5" opacity=".45"/><path d="M24 14l6 6-6 6M30 14l6 6-6 6"/></svg>
+        <h3>แตะสองครั้ง</h3>
+        <p>ฝั่งซ้ายถอย ฝั่งขวาข้าม ครั้งละ 10 วินาที แตะต่อเพื่อข้ามเพิ่ม</p>
+      </div>
+      <div class="gesture">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="13" cy="20" r="6"/><path d="M23 12l7 8-7 8M29 12l7 8-7 8"/></svg>
+        <h3>กดค้าง</h3>
+        <p>เล่นเร็ว 2x ระหว่างที่ค้างไว้ ปล่อยแล้วกลับเป็นปกติ</p>
+      </div>
+      <div class="gesture">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 20h28M11 15l-5 5 5 5M29 15l5 5-5 5"/><circle cx="20" cy="20" r="3.5"/></svg>
+        <h3>ปัดซ้ายขวา</h3>
+        <p>เลื่อนเวลาไปยังจุดที่ต้องการ ปัดสุดจอเท่ากับ 2 นาที</p>
+      </div>
+      <div class="gesture">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 14V6h8M34 14V6h-8M6 26v8h8M34 26v8h-8"/><path d="M15 15l-5-5M25 15l5-5M15 25l-5 5M25 25l5 5" opacity=".5"/></svg>
+        <h3>บีบนิ้ว</h3>
+        <p>บีบออกเพื่อเต็มจอ บีบเข้าเพื่อออก หรือเปิดภาพซ้อนภาพ</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shots">
+      <div class="mac">
+        <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/mac-player.jpg" alt="myB บน Mac เปิดบทความที่มีวิดีโอ พร้อมแถบควบคุมของ myB" loading="lazy">
+      </div>
+      <div class="phone-float"><img src="assets/android-browser.jpg" alt="myB บน Android เปิดหน้าเว็บ มีโล่บล็อกโฆษณาที่แถบล่าง" loading="lazy"></div>
+    </div>
+    <p class="caption">หน้าตาเดียวกันบน Mac และมือถือ บน Mac ใช้คีย์บอร์ดได้ด้วย ← → เพื่อข้าม Space เพื่อเล่น/หยุด F เพื่อเต็มจอ</p>
+  </section>
+
+  <section id="features">
+    <div class="head">
+      <h2>ทำอะไรได้อีก</h2>
+      <p>ทุกอย่างอยู่ในแอปเดียว เปิด/ปิดได้เองในหน้าตั้งค่า</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3zm-1.2 13.6l5.6-5.6-1.4-1.4-4.2 4.2-2-2-1.4 1.4 3.4 3.4z"/></svg></span>
+        <div>
+          <h3>บล็อกโฆษณาในตัว</h3>
+          <p>ใช้ AdGuard ร่วมกับตัวกรองของ myB ที่ทำมาสำหรับเว็บไทย ทั้งแบนเนอร์คาสิโนและโฆษณาคั่นก่อนวิดีโอ ปิดเฉพาะเว็บได้จากปุ่มโล่</p>
+          <span class="where">Android และ Mac</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2zm2 8v2h5v-2H6zm7 0v2h5v-2h-5zm-7-3v2h9v-2H6zm11 0v2h1v-2h-1z"/></svg></span>
+        <div>
+          <h3>ซับไทยอัตโนมัติ</h3>
+          <p>สร้างซับไทยจากเสียงของวิดีโอที่กำลังเล่น ใช้ได้กับวิดีโอที่ไม่มีซับ</p>
+          <span class="where">Android 10 ขึ้นไป</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 14a2 2 0 110-4 2 2 0 010 4zm5.6-4A6 6 0 101 12a6 6 0 0011.6 2H17v4h4v-4h2v-4H12.6z"/></svg></span>
+        <div>
+          <h3>VPN เฉพาะ myB</h3>
+          <p>นำเข้า WireGuard จาก wg-easy ด้วยการสแกน QR หรือไฟล์ .conf เฉพาะ myB ที่วิ่งผ่าน VPN แอปอื่นไม่ได้รับผล ถ้า VPN หลุด myB จะหยุดโหลดทันที</p>
+          <span class="where">Android และ Mac</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 012 2v16a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2zm0 3v13h10V5H7zm5 14.2a1 1 0 100 2 1 1 0 000-2z"/></svg></span>
+        <div>
+          <h3>มือถือเป็นรีโมทของ Mac</h3>
+          <p>ชี้มือถือเพื่อเลื่อนเคอร์เซอร์ พิมพ์จากคีย์บอร์ดมือถือ และคุมวิดีโอเต็มจอบน Mac ส่งหน้าเว็บจากมือถือไปเปิดบน Mac ได้ทันที ทุกข้อความเข้ารหัสตลอดทาง</p>
+          <span class="where">Android + Mac</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 9V7A5 5 0 007 7v2a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2v-9a2 2 0 00-2-2zM9 7a3 3 0 016 0v2H9V7zm4 9.7V18h-2v-1.3a2 2 0 112 0z"/></svg></span>
+        <div>
+          <h3>ล็อกด้วย PIN</h3>
+          <p>ตั้ง PIN 6 หลัก myB จะล็อกเมื่อเปิดแอปหรือกลับมาหลังพักไว้ บน Mac ล็อกตามหน้าจอ และไม่ติดในภาพแคปหน้าจอ</p>
+          <span class="where">Android และ Mac</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.6 13.4a1 1 0 010-1.4l3-3a1 1 0 111.4 1.4l-3 3a1 1 0 01-1.4 0zM8.5 15.5a3 3 0 010-4.2l1.4-1.4-1.4-1.4-1.4 1.4a5 5 0 007 7l1.4-1.4-1.4-1.4-1.4 1.4a3 3 0 01-4.2 0zm7-7a3 3 0 010 4.2l-1.4 1.4 1.4 1.4 1.4-1.4a5 5 0 00-7-7L8.5 8.5l1.4 1.4 1.4-1.4a3 3 0 014.2 0zM3.3 3.3l17.4 17.4-1.4 1.4L1.9 4.7z"/></svg></span>
+        <div>
+          <h3>กันลิงก์ affiliate</h3>
+          <p>หน้าเว็บเปิดลิงก์ Shopee, TikTok หรือ Lazada เองไม่ได้ myB บอกว่าบล็อกอะไรไป และกดเปิดเองได้ถ้าต้องการไปจริง</p>
+          <span class="where">Android</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>ตั้งค่าได้ในหน้าเดียว</h2>
+      <p>แบ่งเป็นหมวด อ่านง่าย ไม่ต้องหาเมนูซ่อน</p>
+    </div>
+    <div class="pair">
+      <figure><img src="assets/android-settings.jpg" alt="หน้าตั้งค่าของ myB บน Android" loading="lazy"><figcaption>Android</figcaption></figure>
+      <figure><img src="assets/mac-settings.jpg" alt="หน้าตั้งค่าของ myB บน Mac" loading="lazy"><figcaption>Mac</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="head">
+      <h2>ติดตั้ง</h2>
+      <p>myB อัปเดตตัวเองได้ เช็กวันละครั้ง หรือกดเช็กเองที่ ตั้งค่า → อัปเดต</p>
+    </div>
+    <div class="install">
+      <div class="platform">
+        <h3>Android <small>8 ขึ้นไป, 64-bit</small></h3>
+        <ol>
+          <li>กดดาวน์โหลดไฟล์ <strong>.apk</strong> บนมือถือ</li>
+          <li>เปิดไฟล์ แล้วอนุญาต “ติดตั้งแอปที่ไม่รู้จัก” ให้แอปที่ใช้เปิด (เช่น Chrome หรือ Files)</li>
+          <li>กดติดตั้ง แล้วเปิด myB ได้เลย</li>
+        </ol>
+        <a class="dl primary" data-platform="android" href="https://github.com/lazymodthai/myb-updates/releases">ดาวน์โหลด .apk <small class="v-android"></small></a>
+      </div>
+      <div class="platform">
+        <h3>Mac <small>ชิป Apple Silicon</small></h3>
+        <ol>
+          <li>ดาวน์โหลดไฟล์ <strong>.dmg</strong> แล้วเปิด</li>
+          <li>ลาก myB ไปไว้ใน <strong>Applications</strong> (ต้องอยู่ในโฟลเดอร์นี้ถึงจะอัปเดตในแอปได้)</li>
+          <li>ครั้งแรก macOS จะกันไว้ ให้คลิกขวาที่ myB → เปิด → เปิด หรือรันคำสั่งนี้ใน Terminal
+            <div class="cmd"><code id="xattr">xattr -dr com.apple.quarantine /Applications/myB.app</code><button type="button" data-copy="xattr">คัดลอก</button></div>
+          </li>
+        </ol>
+        <a class="dl primary" data-platform="mac" href="https://github.com/lazymodthai/myb-updates/releases">ดาวน์โหลด .dmg <small class="v-mac"></small></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cols">
+      <div>
+        <p><a href="https://github.com/lazymodthai/myb-updates/releases">ทุกเวอร์ชันและบันทึกการเปลี่ยนแปลง</a></p>
+        <p>repo นี้เก็บไฟล์ที่ myB ใช้อัปเดตตัวเองด้วย (<code>update.json</code> และรายการกฎโฆษณา <code>filters/thai.txt</code>)</p>
+      </div>
+      <div>
+        <p>myB ใช้ <a href="https://github.com/AdguardTeam/AdguardBrowserExtension">AdGuard Browser Extension</a> (LGPL-3.0),
+          <a href="https://mozilla.github.io/geckoview/">GeckoView</a> (MPL-2.0), <a href="https://www.electronjs.org/">Electron</a>,
+          <a href="https://github.com/ghostery/adblocker">ghostery adblocker</a> (MPL-2.0) และ <a href="https://git.zx2c4.com/wireguard-go/">wireguard-go</a> (MIT)</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Download links and versions come from update.json, the same file the apps read to update themselves.
+  // Without it the buttons keep pointing at the Releases page.
+  fetch('update.json', { cache: 'no-cache' })
+    .then((r) => r.json())
+    .then((u) => {
+      const set = (platform, href, version) => {
+        if (!href) return;
+        document.querySelectorAll(`a[data-platform="${platform}"]`).forEach((a) => { a.href = href; });
+        document.querySelectorAll(`#v-${platform}, .v-${platform}`).forEach((s) => { s.textContent = version; });
+      };
+      set('android', u.latest?.apk?.url, u.latest?.versionName);
+      const zip = u.macos?.arm64?.url;
+      set('mac', zip && zip.replace(/-arm64-mac\.zip$/, '-arm64.dmg'), u.macos?.version);
+    })
+    .catch(() => {});
+
+  // Put the visitor's own platform first in the hero.
+  const mac = /Macintosh/.test(navigator.userAgent); // iPhone user agents also say "Mac OS X"
+  if (mac) {
+    const android = document.getElementById('dl-android');
+    const macBtn = document.getElementById('dl-mac');
+    android.classList.remove('primary');
+    macBtn.classList.add('primary');
+    macBtn.after(android);
+  }
+
+  document.querySelectorAll('button[data-copy]').forEach((b) => {
+    b.addEventListener('click', () => {
+      navigator.clipboard?.writeText(document.getElementById(b.dataset.copy).textContent).then(() => {
+        b.textContent = 'คัดลอกแล้ว';
+        setTimeout(() => { b.textContent = 'คัดลอก'; }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>
