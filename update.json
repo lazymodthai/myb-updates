@@ -54,5 +54,15 @@
       "sha256": "2d5803f98a0be246b7e4d5152714e1544e4b3d3997aec1eb7e16fc77d7afd67e",
       "signature": "X5LW3AjcZWlsqRq9NorR6m/Op2IMQKi4lxB9QSiG3Ud0W26Ed7LbvPc6DfASlAbKDmmHLktEmYgVWhtdsbXNBA=="
     }
+  },
+  "windows": {
+    "version": "0.3.0",
+    "notes": "myB for Windows: ใช้ได้บน Windows 10/11 (64-bit) ติดตั้งโดยไม่ต้องใช้สิทธิ์ผู้ดูแลระบบ มีบล็อกโฆษณา player VPN ล็อก PIN รีโมทจากมือถือ และอัปเดตในแอปเหมือนบน Mac · แก้บางเว็บไม่ซ่อนแบนเนอร์คาสิโนตามรายการของ myB · ข้อความคีย์ลัดในแอปแสดงตามเครื่อง (⌘ บน Mac, Ctrl บน Windows)",
+    "x64": {
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/win-v0.3.0/myB-Setup-0.3.0-x64.exe",
+      "size": 130636014,
+      "sha256": "2ebb57c5ab2de74f0141f1f82080c2f27244ea4aa034e90afdd97477bc5ebe59",
+      "signature": "14PnHIzKgJTkdL5Aed2pC2V83FEDyDb1IXRJ7zFt+dQ/k5pI5A2YaeumUPNutSuMcTfiKoq2w3cNsXbKq8MABg=="
+    }
   }
 }
