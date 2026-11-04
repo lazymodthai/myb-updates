@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>myB — เบราว์เซอร์สำหรับ Android และ Mac</title>
-<meta name="description" content="เบราว์เซอร์ภาษาไทย บล็อกโฆษณาในตัว มี player สำหรับวิดีโอทุกเว็บ ซับไทยอัตโนมัติ และ VPN เฉพาะ myB ใช้ฟรีบน Android และ Mac">
-<meta property="og:title" content="myB — เบราว์เซอร์สำหรับ Android และ Mac">
+<title>myB — เบราว์เซอร์สำหรับ Android, Mac และ Windows</title>
+<meta name="description" content="เบราว์เซอร์ภาษาไทย บล็อกโฆษณาในตัว มี player สำหรับวิดีโอทุกเว็บ ซับไทยอัตโนมัติ และ VPN เฉพาะ myB ใช้ฟรีบน Android, Mac และ Windows">
+<meta property="og:title" content="myB — เบราว์เซอร์สำหรับ Android, Mac และ Windows">
 <meta property="og:description" content="บล็อกโฆษณาในตัว คุมวิดีโอได้ทุกเว็บ ซับไทยอัตโนมัติ ใช้ฟรี">
 <meta property="og:image" content="https://lazymodthai.github.io/myb-updates/assets/banner.png">
 <meta property="og:type" content="website">
@@ -59,7 +59,18 @@
   .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
 
   /* Top bar */
-  .top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  /* Sticky top bar: full width, translucent, a hairline once the page has scrolled under it. */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .topbar.scrolled { border-bottom-color: var(--line); }
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .stage, section { scroll-margin-top: 84px; }
   .brand { display: flex; align-items: center; gap: 10px; font: 700 22px "Anuphan", sans-serif; color: var(--ink); text-decoration: none; }
   .brand img { width: 34px; height: 34px; border-radius: 9px; }
   .top nav { display: flex; gap: 22px; font-size: 15px; }
@@ -69,6 +80,7 @@
 
   /* Hero: the page opens on myB's own player — the "b" corner button and the bar. */
   .stage {
+    margin-top: 10px;
     position: relative;
     overflow: hidden;
     border-radius: 28px;
@@ -262,7 +274,7 @@
   @media (max-width: 700px) { .pair { grid-template-columns: minmax(0, 1fr); } .pair figure:first-child { width: 70%; } }
 
   /* Install */
-  .install { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .install { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
   .platform { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
   .platform h3 { font-size: 24px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .platform h3 small { font: 400 15px "IBM Plex Sans Thai", sans-serif; color: var(--muted); }
@@ -282,7 +294,7 @@
     flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
     border-radius: 8px; padding: 4px 10px; font: 500 13px "IBM Plex Sans Thai", sans-serif; cursor: pointer;
   }
-  @media (max-width: 760px) { .install { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 980px) { .install { grid-template-columns: minmax(0, 1fr); } }
 
   footer { margin-top: 110px; padding: 36px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
   footer .cols { display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: space-between; }
@@ -291,8 +303,8 @@
 </head>
 <body>
 
-<div class="wrap">
-  <header class="top">
+<header class="topbar">
+  <div class="wrap top">
     <a class="brand" href="#"><img src="assets/icon.png" alt="">myB</a>
     <nav aria-label="หัวข้อในหน้า">
       <a class="opt" href="#player">Player</a>
@@ -300,14 +312,17 @@
       <a href="#install">ติดตั้ง</a>
       <a href="https://github.com/lazymodthai/myb-updates/releases">Releases</a>
     </nav>
-  </header>
+  </div>
+</header>
+
+<div class="wrap">
 
   <div class="stage">
     <span class="corner" aria-hidden="true">b</span>
     <div class="stage-body">
       <div>
         <h1>ดูเว็บได้เต็มตา ไม่มีโฆษณามาบัง</h1>
-        <p class="lede">myB เป็นเบราว์เซอร์ภาษาไทยสำหรับ Android และ Mac บล็อกโฆษณาในตัว
+        <p class="lede">myB เป็นเบราว์เซอร์ภาษาไทยสำหรับ Android, Mac และ Windows บล็อกโฆษณาในตัว
           และมี player ของตัวเองบนวิดีโอทุกเว็บ แตะสองครั้งเพื่อข้าม กดค้างเพื่อดูเร็วขึ้น ใช้ฟรี ไม่ต้องสมัคร</p>
       </div>
       <div class="phone"><img src="assets/android-player.jpg" alt="myB บน Android กำลังเล่นวิดีโอ มีปุ่ม b และแถบควบคุมของ myB"></div>
@@ -322,7 +337,11 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.77c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76A4.26 4.26 0 005.24 10c-1.54 2.67-.39 6.62 1.1 8.79.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.14a9.5 9.5 0 001.2-2.47 3.84 3.84 0 01-2.26-3.59zM14.2 6.3A3.83 3.83 0 0015.1 3.5a3.9 3.9 0 00-2.53 1.31 3.66 3.66 0 00-.92 2.72 3.24 3.24 0 002.55-1.23z"/></svg>
         ดาวน์โหลดสำหรับ Mac <small id="v-mac"></small>
       </a>
-      <span class="note">Android 8 ขึ้นไป (64-bit) และ Mac ชิป Apple Silicon</span>
+      <a class="dl" id="dl-windows" data-platform="windows" href="https://github.com/lazymodthai/myb-updates/releases">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.4-1v7H3v-6zm0 13l7.4 1v-7H3v6zm8.3 1.1L21 21v-8.4h-9.7v7zm0-15.2v7.1H21V3l-9.7 1.4z"/></svg>
+        ดาวน์โหลดสำหรับ Windows <small id="v-windows"></small>
+      </a>
+      <span class="note">Android 8+ (64-bit), Mac ชิป Apple Silicon, Windows 10/11 (64-bit)</span>
     </div>
   </div>
 
@@ -363,7 +382,7 @@
       </div>
       <div class="phone-float"><img src="assets/android-browser.jpg" alt="myB บน Android เปิดหน้าเว็บ มีโล่บล็อกโฆษณาที่แถบล่าง" loading="lazy"></div>
     </div>
-    <p class="caption">หน้าตาเดียวกันบน Mac และมือถือ บน Mac ใช้คีย์บอร์ดได้ด้วย ← → เพื่อข้าม Space เพื่อเล่น/หยุด F เพื่อเต็มจอ</p>
+    <p class="caption">หน้าตาเดียวกันบนคอมพิวเตอร์และมือถือ บน Mac และ Windows ใช้คีย์บอร์ดได้ด้วย ← → เพื่อข้าม Space เพื่อเล่น/หยุด F เพื่อเต็มจอ</p>
   </section>
 
   <section id="features">
@@ -377,7 +396,7 @@
         <div>
           <h3>บล็อกโฆษณาในตัว</h3>
           <p>ใช้ AdGuard ร่วมกับตัวกรองของ myB ที่ทำมาสำหรับเว็บไทย ทั้งแบนเนอร์คาสิโนและโฆษณาคั่นก่อนวิดีโอ ปิดเฉพาะเว็บได้จากปุ่มโล่</p>
-          <span class="where">Android และ Mac</span>
+          <span class="where">Android, Mac และ Windows</span>
         </div>
       </div>
       <div class="feature">
@@ -393,23 +412,23 @@
         <div>
           <h3>VPN เฉพาะ myB</h3>
           <p>นำเข้า WireGuard จาก wg-easy ด้วยการสแกน QR หรือไฟล์ .conf เฉพาะ myB ที่วิ่งผ่าน VPN แอปอื่นไม่ได้รับผล ถ้า VPN หลุด myB จะหยุดโหลดทันที</p>
-          <span class="where">Android และ Mac</span>
+          <span class="where">Android, Mac และ Windows</span>
         </div>
       </div>
       <div class="feature">
         <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 012 2v16a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2zm0 3v13h10V5H7zm5 14.2a1 1 0 100 2 1 1 0 000-2z"/></svg></span>
         <div>
-          <h3>มือถือเป็นรีโมทของ Mac</h3>
-          <p>ชี้มือถือเพื่อเลื่อนเคอร์เซอร์ พิมพ์จากคีย์บอร์ดมือถือ และคุมวิดีโอเต็มจอบน Mac ส่งหน้าเว็บจากมือถือไปเปิดบน Mac ได้ทันที ทุกข้อความเข้ารหัสตลอดทาง</p>
-          <span class="where">Android + Mac</span>
+          <h3>มือถือเป็นรีโมทของคอมพิวเตอร์</h3>
+          <p>ชี้มือถือเพื่อเลื่อนเคอร์เซอร์ พิมพ์จากคีย์บอร์ดมือถือ และคุมวิดีโอเต็มจอบน Mac หรือ Windows ส่งหน้าเว็บจากมือถือไปเปิดบนคอมได้ทันที ทุกข้อความเข้ารหัสตลอดทาง</p>
+          <span class="where">Android + Mac / Windows</span>
         </div>
       </div>
       <div class="feature">
         <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 9V7A5 5 0 007 7v2a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2v-9a2 2 0 00-2-2zM9 7a3 3 0 016 0v2H9V7zm4 9.7V18h-2v-1.3a2 2 0 112 0z"/></svg></span>
         <div>
           <h3>ล็อกด้วย PIN</h3>
-          <p>ตั้ง PIN 6 หลัก myB จะล็อกเมื่อเปิดแอปหรือกลับมาหลังพักไว้ บน Mac ล็อกตามหน้าจอ และไม่ติดในภาพแคปหน้าจอ</p>
-          <span class="where">Android และ Mac</span>
+          <p>ตั้ง PIN 6 หลัก myB จะล็อกเมื่อเปิดแอปหรือกลับมาหลังพักไว้ บนคอมพิวเตอร์ล็อกตามหน้าจอ และไม่ติดในภาพแคปหน้าจอ</p>
+          <span class="where">Android, Mac และ Windows</span>
         </div>
       </div>
       <div class="feature">
@@ -460,6 +479,15 @@
         </ol>
         <a class="dl primary" data-platform="mac" href="https://github.com/lazymodthai/myb-updates/releases">ดาวน์โหลด .dmg <small class="v-mac"></small></a>
       </div>
+      <div class="platform">
+        <h3>Windows <small>10 และ 11, 64-bit</small></h3>
+        <ol>
+          <li>ดาวน์โหลดไฟล์ <strong>.exe</strong> แล้วเปิด</li>
+          <li>ครั้งแรก Windows อาจขึ้น “Windows protected your PC” เพราะแอปยังไม่ได้เซ็นด้วยใบรับรองที่ต้องซื้อ ให้กด <strong>More info</strong> → <strong>Run anyway</strong></li>
+          <li>myB ติดตั้งเองโดยไม่ต้องใช้สิทธิ์ผู้ดูแลระบบ แล้วเปิดให้ทันที มีไอคอนบนเดสก์ท็อปและใน Start</li>
+        </ol>
+        <a class="dl primary" data-platform="windows" href="https://github.com/lazymodthai/myb-updates/releases">ดาวน์โหลด .exe <small class="v-windows"></small></a>
+      </div>
     </div>
   </section>
 
@@ -492,18 +520,23 @@
       set('android', u.latest?.apk?.url, u.latest?.versionName);
       const zip = u.macos?.arm64?.url;
       set('mac', zip && zip.replace(/-arm64-mac\.zip$/, '-arm64.dmg'), u.macos?.version);
+      set('windows', u.windows?.x64?.url, u.windows?.version);
     })
     .catch(() => {});
 
-  // Put the visitor's own platform first in the hero.
-  const mac = /Macintosh/.test(navigator.userAgent); // iPhone user agents also say "Mac OS X"
-  if (mac) {
-    const android = document.getElementById('dl-android');
-    const macBtn = document.getElementById('dl-mac');
-    android.classList.remove('primary');
-    macBtn.classList.add('primary');
-    macBtn.after(android);
+  // Put the visitor's own platform first in the hero (iPhone user agents also say "Mac OS X": Macintosh only).
+  const ua = navigator.userAgent;
+  const own = /Windows NT/.test(ua) ? 'windows' : /Macintosh/.test(ua) ? 'mac' : null;
+  if (own) {
+    const first = document.getElementById(`dl-${own}`);
+    document.querySelectorAll('.bar .dl').forEach((a) => a.classList.toggle('primary', a === first));
+    first.parentElement.insertBefore(first, document.getElementById('dl-android'));
   }
+
+  const topbar = document.querySelector('.topbar');
+  const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 4);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   document.querySelectorAll('button[data-copy]').forEach((b) => {
     b.addEventListener('click', () => {
