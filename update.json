@@ -46,13 +46,13 @@
     "sha256": "5d0766ca082df28c294f0533ca84a7de7e5bab6504a902420336706f4c5f2b21"
   },
   "macos": {
-    "version": "0.2.2",
-    "notes": "ไอคอนและสีใหม่ตามแบรนด์ myB · เลือกธีม ตามระบบ / สว่าง / มืด ได้ที่ ตั้งค่า → ทั่วไป (หน้าเว็บที่รองรับโหมดมืดเปลี่ยนตาม) · รีโมทจากมือถือ: เปิดหน้าเว็บจากมือถือเป็นแท็บใหม่บน Mac (แตะค้างที่แถบที่อยู่บนมือถือ → เปิดใน Mac, ใช้คู่กับ myB for Android 0.3.7)",
+    "version": "0.3.0",
+    "notes": "myB for Windows: ใช้ได้บน Windows 10/11 (64-bit) ติดตั้งโดยไม่ต้องใช้สิทธิ์ผู้ดูแลระบบ มีบล็อกโฆษณา player VPN ล็อก PIN รีโมทจากมือถือ และอัปเดตในแอปเหมือนบน Mac · แก้บางเว็บไม่ซ่อนแบนเนอร์คาสิโนตามรายการของ myB · ข้อความคีย์ลัดในแอปแสดงตามเครื่อง (⌘ บน Mac, Ctrl บน Windows)",
     "arm64": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.2.2/myB-0.2.2-arm64-mac.zip",
-      "size": 128693831,
-      "sha256": "19a7bec28f3b21de2c8269a0344b905c29637e1d46a10ccb4a17c8c7adbd313e",
-      "signature": "RFUVLY6JIe6nuyFJptYZ57jvIUDT6DQvdGdsbFit7gnRcbfJZDCauYtCDACARswKylvZPnK8x/+JQyYISgTyDw=="
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.3.0/myB-0.3.0-arm64-mac.zip",
+      "size": 128697021,
+      "sha256": "2d5803f98a0be246b7e4d5152714e1544e4b3d3997aec1eb7e16fc77d7afd67e",
+      "signature": "X5LW3AjcZWlsqRq9NorR6m/Op2IMQKi4lxB9QSiG3Ud0W26Ed7LbvPc6DfASlAbKDmmHLktEmYgVWhtdsbXNBA=="
     }
   }
 }
