@@ -46,13 +46,13 @@
     "sha256": "5d0766ca082df28c294f0533ca84a7de7e5bab6504a902420336706f4c5f2b21"
   },
   "macos": {
-    "version": "0.3.0",
-    "notes": "myB for Windows: ใช้ได้บน Windows 10/11 (64-bit) ติดตั้งโดยไม่ต้องใช้สิทธิ์ผู้ดูแลระบบ มีบล็อกโฆษณา player VPN ล็อก PIN รีโมทจากมือถือ และอัปเดตในแอปเหมือนบน Mac · แก้บางเว็บไม่ซ่อนแบนเนอร์คาสิโนตามรายการของ myB · ข้อความคีย์ลัดในแอปแสดงตามเครื่อง (⌘ บน Mac, Ctrl บน Windows)",
+    "version": "0.4.0",
+    "notes": "ติดตั้งส่วนขยาย (extension) จาก Chrome Web Store ได้: กด \"Add to myB\" บนหน้าร้าน หรือใส่ลิงก์/ID ในเมนู ⋯ → ส่วนขยาย จัดการ เปิด/ปิด และลบได้ที่หน้าเดียวกัน อัปเดตให้อัตโนมัติวันละครั้ง · ปุ่มของส่วนขยายบนแถบเครื่องมือ พร้อมตัวเลขบนปุ่มและหน้าต่าง popup ปักหมุดหรือซ่อนปุ่มได้จากปุ่มรูปจิ๊กซอว์ · แถบบุ๊กมาร์กใต้ช่องที่อยู่แบบ Chrome: ลากเรียงได้ มีโฟลเดอร์ ลากลิงก์จากหน้าเว็บมาวางได้ คลิกขวาเพื่อแก้ไขหรือลบ เปิด/ปิดแถบด้วย ⌘⇧B (Windows: Ctrl+Shift+B) หน้าบุ๊กมาร์กทั้งหมดย้ายไปที่ ⌘⌥B (Windows: Ctrl+Shift+O) · สำหรับนักพัฒนา: โหลดส่วนขยายจากโฟลเดอร์ (Load unpacked) และกดโหลดใหม่หลังแก้ไฟล์ได้ · Windows: แก้เว็บที่ใบรับรองไม่ถูกต้องแสดงหน้าข้อผิดพลาดทั่วไปแทนหน้าคำเตือนที่กด \"ดำเนินการต่อ\" ได้",
     "arm64": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.3.0/myB-0.3.0-arm64-mac.zip",
-      "size": 128697021,
-      "sha256": "2d5803f98a0be246b7e4d5152714e1544e4b3d3997aec1eb7e16fc77d7afd67e",
-      "signature": "X5LW3AjcZWlsqRq9NorR6m/Op2IMQKi4lxB9QSiG3Ud0W26Ed7LbvPc6DfASlAbKDmmHLktEmYgVWhtdsbXNBA=="
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.4.0/myB-0.4.0-arm64-mac.zip",
+      "size": 128730593,
+      "sha256": "fa6702732648b1839c8457ff280018304b0b9555093ff7090653ad3cf51f2ea2",
+      "signature": "6KxAClosfKBKSmzwZ6qf0IZR7RlxT/5yWBz5G/xFBzN0D0/IDM3Ne0s0OW7zFUHObjTjrVU57JHtxgFpPonrBw=="
     }
   },
   "windows": {
