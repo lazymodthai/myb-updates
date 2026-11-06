@@ -1,42 +1,42 @@
 {
   "schema": 1,
   "latest": {
-    "versionCode": 12,
-    "versionName": "0.3.7",
-    "notes": "- แตะค้างที่แถบที่อยู่เพื่อบุ๊กมาร์กหน้านี้ หรือเปิดหน้านี้ใน Mac\n- เปิดใน Mac: หน้าเว็บเปิดเป็นแท็บใหม่บน myB ใน Mac ทันที (ต้องจับคู่รีโมท Mac และเปิด \"รีโมทจากมือถือ\" บน Mac ไว้)\n- ไอคอนและสีของแอปตามแบรนด์ใหม่ของ myB\n- เลือกธีม ตามระบบ / สว่าง / มืด ได้ที่ ตั้งค่า → ทั่วไป (หน้าเว็บที่รองรับโหมดมืดจะเปลี่ยนตาม)",
+    "versionCode": 13,
+    "versionName": "0.3.8",
+    "notes": "- เร็วขึ้นและใช้แรมน้อยลง: แท็บที่ไม่ได้ดูเกิน 30 นาทีจะพักหน้าไว้ และโหลดกลับพร้อมประวัติย้อนกลับเมื่อแตะ (เมื่อแรมใกล้เต็ม แอปจะพักแท็บพื้นหลังเร็วขึ้น)\n- ไฟล์ติดตั้งเล็กลงราว 20 MB: บีบโค้ดของแอป และตัดรายการกรองของ AdGuard ที่ไม่ได้ใช้ออก (เปิดใช้ภายหลังได้ แอปจะดาวน์โหลดให้)",
     "apk": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.7/myB-0.3.7.apk",
-      "size": 135406664,
-      "sha256": "dae26f1759beb7e3883fb55265bd7d1dc11cdaa483cd5538b21c60415602bd5f"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.8/myB-0.3.8.apk",
+      "size": 114153494,
+      "sha256": "b9495525a50fa8f49c36901c4067c3b240dad447b82ddd5b6c78920557a2e969"
     }
   },
   "patches": [
     {
+      "fromVersionCode": 12,
+      "fromSha256": "dae26f1759beb7e3883fb55265bd7d1dc11cdaa483cd5538b21c60415602bd5f",
+      "toVersionCode": 13,
+      "windowLog": 28,
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.8/myB-12-to-13.patch.zst",
+      "size": 3705782,
+      "sha256": "8cf2f405c8e6ad920fb3d7c0ed5e4506d3b2d6bd165f730a033ab0fae11089d7"
+    },
+    {
       "fromVersionCode": 11,
       "fromSha256": "5b83765fa553bc774823dafda818bb91505be85a00a6392f6193eb8d0651e902",
-      "toVersionCode": 12,
+      "toVersionCode": 13,
       "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.7/myB-11-to-12.patch.zst",
-      "size": 13918149,
-      "sha256": "b699c51286593d7bd6f989758fc5e95a7d2fde4b9a28f52f059bfc5d78a08b78"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.8/myB-11-to-13.patch.zst",
+      "size": 3785895,
+      "sha256": "c3aeb2f926070d3e9ef91f2465d9d2ff265ebcc16bf13cea07dcd3ab34129c12"
     },
     {
       "fromVersionCode": 10,
       "fromSha256": "453538d4e467355fc1ecd26481801bed1f9cd6321e44f2307413a0c410890845",
-      "toVersionCode": 12,
+      "toVersionCode": 13,
       "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.7/myB-10-to-12.patch.zst",
-      "size": 13924836,
-      "sha256": "be5c38e4ff1409ebb8c5034dd82b856db6c7df51be34b0aef3ebe73ee7fffaca"
-    },
-    {
-      "fromVersionCode": 9,
-      "fromSha256": "9cf634ecdcb93cd188ce0238d9a76efcadeeaf379ef91835315383d9bb398773",
-      "toVersionCode": 12,
-      "windowLog": 28,
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.7/myB-9-to-12.patch.zst",
-      "size": 13998106,
-      "sha256": "e08751af258818d39267d384b05aece3fdab529890f0faeb4845ba86227ecc62"
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/v0.3.8/myB-10-to-13.patch.zst",
+      "size": 3795984,
+      "sha256": "0e94ab347bbd3b541db0b40d284023ec664a7f7e6a5fb35c558a2c76991e2857"
     }
   ],
   "filters": {
