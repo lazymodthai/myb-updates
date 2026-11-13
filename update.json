@@ -46,13 +46,13 @@
     "sha256": "5d0766ca082df28c294f0533ca84a7de7e5bab6504a902420336706f4c5f2b21"
   },
   "macos": {
-    "version": "0.4.2",
-    "notes": "เร็วขึ้นและใช้แรมน้อยลง: แท็บที่ไม่ได้ดูเกิน 30 นาทีจะพักไว้ (ชื่อจางลง) และโหลดกลับพร้อมประวัติย้อนกลับเมื่อคลิก เมื่อ myB ใช้แรมเกินหนึ่งในสี่ของเครื่อง จะพักแท็บพื้นหลังเร็วขึ้น · เปิดแอปเร็วขึ้น และแถบเครื่องมือไม่กระตุกเมื่อหน้าเว็บมีโฆษณาถูกบล็อกจำนวนมาก · ไฟล์ติดตั้งและพื้นที่หลังติดตั้งเล็กลง (ตัดภาษาที่ไม่ได้ใช้และบีบรายการกรองโฆษณา)",
+    "version": "0.4.3",
+    "notes": "ดู HBO Max, Netflix, Disney+ และเว็บที่ใช้ DRM (Widevine) ได้แล้ว (ครั้งแรกที่เปิดแอปจะดาวน์โหลดส่วนประกอบ DRM ราว 20 MB) · สวิตช์เปิด/ปิด VPN บนแถบเครื่องมือ (ข้างไอคอนโล่) กดครั้งเดียวเปิดหรือปิดได้เลย คลิกขวาเพื่อดูสถานะ เชื่อมต่อใหม่ หรือไปที่ตั้งค่า VPN (แสดงเมื่อนำเข้าโปรไฟล์ VPN แล้ว) · เครื่องมือนักพัฒนา (DevTools) แบบติดข้าง/ด้านล่าง: หน้าเว็บอยู่ในกรอบที่ DevTools วาดให้แบบ Chrome แล้ว โหมดจำลองอุปกรณ์ (Dimensions) แสดงหน้าเว็บในกรอบอุปกรณ์และปรับขนาดได้ และลากเส้นแบ่งเพื่อปรับขนาด DevTools ได้ (ไม่มีช่องว่างสีเทาระหว่างหน้าเว็บกับ DevTools อีก) · DevTools: เปลี่ยนตำแหน่ง (ขวา/ล่าง/แยกหน้าต่าง) ได้ทั้งจากเมนูของ myB และจากปุ่ม ⋮ → Dock side ใน DevTools เอง แบบด้านล่างแสดงถูกต้องแล้ว และเปลี่ยนจากแยกหน้าต่างกลับมาติดในหน้าต่างได้ · แก้แอปเด้งข้อความ \"A JavaScript error occurred in the main process\" (Object has been destroyed) ตอนปิดหน้าต่างขณะเปิด VPN อยู่ · แก้วิดีโอเต็มจอ: กดออกจากเต็มจอ (เช่นกด f ในตัวเล่น) ระหว่างที่หน้าต่างกำลังขยายเต็มจอ แล้วหน้าต่างค้างอยู่ในโหมดเต็มจอ",
     "arm64": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.4.2/myB-0.4.2-arm64-mac.zip",
-      "size": 126916887,
-      "sha256": "ea322688ba202f854f9781369a9ddb961b2cf104086bae6d69969f0ca0f7b864",
-      "signature": "uOV7Pids+hz2UGEWWsFiAEUgRwzMmXAej5WTyxDPKsI+8BuRZb0lTzmU7Gb7DMwqBojnp3VZg8W0sdlC+/SBAg=="
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/mac-v0.4.3/myB-0.4.3-arm64-mac.zip",
+      "size": 126538239,
+      "sha256": "8101e3a1c9644be442c6cf66a83dbf5d19de9901f306c3ffc7fdadd8b6035af6",
+      "signature": "M6IYQmQAy6NUc22fTIjAOE0svzrlcAkb7u5x0M2rBupz/vEhUxQySLwu/E9aAofYrqNP9duIWJ1a5Cqa3wVLDg=="
     }
   },
   "windows": {
