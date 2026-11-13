@@ -56,13 +56,13 @@
     }
   },
   "windows": {
-    "version": "0.4.0",
-    "notes": "ติดตั้งส่วนขยาย (extension) จาก Chrome Web Store ได้: กด \"Add to myB\" บนหน้าร้าน หรือใส่ลิงก์/ID ในเมนู ⋯ → ส่วนขยาย จัดการ เปิด/ปิด และลบได้ที่หน้าเดียวกัน อัปเดตให้อัตโนมัติวันละครั้ง · ปุ่มของส่วนขยายบนแถบเครื่องมือ พร้อมตัวเลขบนปุ่มและหน้าต่าง popup ปักหมุดหรือซ่อนปุ่มได้จากปุ่มรูปจิ๊กซอว์ · แถบบุ๊กมาร์กใต้ช่องที่อยู่แบบ Chrome: ลากเรียงได้ มีโฟลเดอร์ ลากลิงก์จากหน้าเว็บมาวางได้ คลิกขวาเพื่อแก้ไขหรือลบ เปิด/ปิดแถบด้วย ⌘⇧B (Windows: Ctrl+Shift+B) หน้าบุ๊กมาร์กทั้งหมดย้ายไปที่ ⌘⌥B (Windows: Ctrl+Shift+O) · สำหรับนักพัฒนา: โหลดส่วนขยายจากโฟลเดอร์ (Load unpacked) และกดโหลดใหม่หลังแก้ไฟล์ได้ · Windows: แก้เว็บที่ใบรับรองไม่ถูกต้องแสดงหน้าข้อผิดพลาดทั่วไปแทนหน้าคำเตือนที่กด \"ดำเนินการต่อ\" ได้",
+    "version": "0.4.4",
+    "notes": "แก้ลงชื่อเข้าใช้ Google (และเว็บอื่น) ค้างที่ \"ลงชื่อเข้าใช้ให้เสร็จด้วยพาสคีย์\" บน Mac: ตอนนี้เว็บจะเสนอวิธีอื่น (รหัสผ่าน, ยืนยันทางโทรศัพท์) ให้ทันที เพราะ myB บน Mac ยังใช้พาสคีย์ไม่ได้",
     "x64": {
-      "url": "https://github.com/lazymodthai/myb-updates/releases/download/win-v0.4.0/myB-Setup-0.4.0-x64.exe",
-      "size": 130664565,
-      "sha256": "625a2c7751ecfd733532a884e82b6bf18a4d550eee04a88f249642dd256804e8",
-      "signature": "IzwnzEm+3B6hCX4eilIMrCEBRTHNAkYayH84Ggr6FqihwzYUJAPmKUwOrQCUkrYuVg5WNcGXe/ENTK4++CO6AA=="
+      "url": "https://github.com/lazymodthai/myb-updates/releases/download/win-v0.4.4/myB-Setup-0.4.4-x64.exe",
+      "size": 124942544,
+      "sha256": "f5d352c6b705129122bce5ecf55d7f7c8068049dfd45b4b20c294a04e60e6260",
+      "signature": "ghvaPzXNaHyxYDnVjgRIv6UlFNUTepUxLZGbt+0ZOXTw6bXO9cYF6UkSKeKEWuIwuZeFbouYFLoxI55PtA2zDQ=="
     }
   }
 }
